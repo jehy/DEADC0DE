@@ -1,0 +1,15 @@
+{
+  "name": "DEADC0DE",
+  "version": "1.0.0",
+  "description": "Inject this module to check for non required code in Node.JS application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jehy <npm@jehy.ru>",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "klaw": "^2.1.0"
+  }
+}
