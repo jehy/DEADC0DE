@@ -13,17 +13,18 @@ if (typeof Object.assign === 'undefined') { // need for library modules
 const APP_INIT_TIME = 5000;
 
 function isModule(filename) {
+  const filenameLower = filename.toLowerCase();
   return (
-    (filename.indexOf('/node_modules/') === -1) &&
-    (filename.indexOf('/test/') === -1) &&
-    (filename.indexOf('/tests/') === -1) &&
-    (filename.indexOf('/bin/') === -1) &&
-    (filename.indexOf('/conf/') === -1) &&
-    (filename.indexOf('/DEADC0DE/') === -1) &&
-    (filename.indexOf('/.git/') === -1) &&
-    (path.basename(filename) !== 'package.json') &&
-    (path.basename(filename) !== 'package-lock.json') &&
-    (path.extname(filename) === '.js' || path.extname(filename) === '.json')
+    (filenameLower.indexOf('/node_modules/') === -1) &&
+    (filenameLower.indexOf('/test/') === -1) &&
+    (filenameLower.indexOf('/tests/') === -1) &&
+    (filenameLower.indexOf('/bin/') === -1) &&
+    (filenameLower.indexOf('/conf/') === -1) &&
+    (filenameLower.indexOf('/deadc0de/') === -1) &&
+    (filenameLower.indexOf('/.git/') === -1) &&
+    (path.basename(filenameLower) !== 'package.json') &&
+    (path.basename(filenameLower) !== 'package-lock.json') &&
+    (path.extname(filenameLower) === '.js' || path.extname(filenameLower) === '.json')
   );
 }
 
