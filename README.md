@@ -27,9 +27,23 @@ Options are optional, and those are:
 * `path` application root path. If no provided, it will be calculated.
 * `info` some debug info for logging (for example whe you call DEADCODE several times)
 
-## Analytic script
+## Scripts
 
-Package also contains script for analyzing intersection in non used modules
+### Requires
+
+It is a script for statical requires analization. It parses all files, beginning
+from the main one(s), and compares them with files total.
+
+Parameters:
+* `dir` directory with all code that you want to check
+* `file` root file(s), separated by comma
+* `nodePath` additional node pathes if you need
+* `nodeModules` path to node modules of project being checked
+* `reportDir` where to output report
+* `verbose` write tons of logs to console
+
+### Analyze
+It is a  script for analyzing intersection in non used modules
 from several logs in JSON format.
 
 You can use this command like
