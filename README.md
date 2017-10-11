@@ -2,7 +2,8 @@
 
 Find unused modules in your project!
 
-Inject this module to your project, run it and it will check all your requires
+Inject this module to entry point of your project, run it and it
+ will check all your requires
  and generate report which contains used and unused project files.
 
 It will work with:
@@ -36,7 +37,7 @@ from the main one(s), and compares them with files total.
 
 Parameters:
 * `dir` directory with all code that you want to check
-* `file` root file(s), separated by comma
+* `file` entry point(s), separated by comma
 * `nodePath` additional node pathes if you need
 * `nodeModules` path to node modules of project being checked
 * `reportDir` where to output report
@@ -52,7 +53,7 @@ You can use this command like
 
 (dir is a directory with your reports)
 
-to generate file with all modules that are not used in both reports.
+to generate file with all modules that are not used in all reports.
 
 ## Compatibility
 
