@@ -1,15 +1,30 @@
 {
   "name": "DEADC0DE",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Inject this module to check for non required code in Node.JS application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "./node_modules/.bin/eslint index.js src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "node ./node_modules/babel-cli/bin/babel.js --presets es2015 -d ./lib src",
+    "prepublish": "npm run compile"
   },
   "author": "Jehy <npm@jehy.ru>",
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.1",
-    "klaw": "^2.1.0"
+    "klaw": "^2.1.0",
+    "object-assign": "^4.1.1",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-es2015": "6.24.1",
+    "eslint": "4.8.0",
+    "eslint-config-airbnb-base": "12.0.2",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-loader": "1.9.0",
+    "eslint-plugin-promise": "3.5.0",
+    "eslint-plugin-standard": "3.0.1"
   }
 }
