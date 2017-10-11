@@ -57,4 +57,4 @@ to generate file with all modules that are not used in both reports.
 ## Compatibility
 
 * injectable code is compatible with node 0.11+.
-* command line analytic script is compatible with node 8+.
+* command line scripts are compatible with node 8+ (possibly 4+).
