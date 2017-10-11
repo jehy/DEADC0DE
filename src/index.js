@@ -87,15 +87,35 @@ module.exports = (options = {}) => {
       });
     })
     .then(({shortestPath, allFiles, usedFiles}) => {
+
+      const nonUsedFiles = allFiles.filter(el => usedFiles.indexOf(el) === -1);
+
+      if (options.reportJson && options.reportDir) {
+        const logFileName = path.join(options.reportDir, '/',
+          `report.${uuid()}.${module.parent.parent.filename.replace(new RegExp('/', 'g'), '_')}.json`);
+        const log = {
+          info: options.info,
+          moduleFrom: module.parent.parent.filename,
+          minPath: shortestPath,
+          shortReport: `Short report: ${usedFiles.length} files from ${allFiles.length} are really used`,
+          usedFiles,
+          allFiles,
+          nonUsedFiles,
+        };
+        return Promise.promisify(fs.writeFile)(logFileName, JSON.stringify(log, null, 3));
+      }
+
       const log = [];
       log.push('\n\n===============DEADC0DE===============');
+      if (options.info) {
+        log.push(`info: ${JSON.stringify(options.info)}`);
+      }
       log.push(`iterated modules from: ${module.parent.parent.filename}`);
       log.push(`min path: ${shortestPath}`);
       log.push(`Short report: ${usedFiles.length} files from ${allFiles.length} are really used`);
       log.push(`\n\nAll files (${allFiles.length}):\n${allFiles.sort().join('\n')}`);
       log.push(`\n\nUsed files (${usedFiles.length}):\n${usedFiles.sort().join('\n')}`);
-      const nonUsed = allFiles.filter(el => usedFiles.indexOf(el) === -1);
-      log.push(`\n\nNon Used files (${nonUsed.length}):\n${nonUsed.sort().join('\n')}`);
+      log.push(`\n\nNon Used files (${nonUsedFiles.length}):\n${nonUsedFiles.sort().join('\n')}`);
       log.push('===============DEADC0DE===============\n\n');
       let logPromise;
       if (options.reportDir) {

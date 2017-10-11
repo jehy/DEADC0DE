@@ -1,19 +1,21 @@
 {
   "name": "DEADC0DE",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Inject this module to check for non required code in Node.JS application",
   "main": "index.js",
   "scripts": {
     "lint": "./node_modules/.bin/eslint index.js src",
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "node ./node_modules/babel-cli/bin/babel.js --presets es2015 -d ./lib src",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run compile",
+    "analyze": "node ./bin/analyze.js"
   },
   "author": "Jehy <npm@jehy.ru>",
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.1",
     "klaw": "^2.1.0",
+    "minimist": "^1.2.0",
     "object-assign": "^4.1.1",
     "uuid": "^3.1.0"
   },
